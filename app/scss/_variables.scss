@@ -1,0 +1,55 @@
+// grid
+$column: 20px;
+$gutter: 12px;
+$grid-columns: 12;
+$max-width: 1200px;
+
+// font stacks
+$playfairDisplay: 'Playfair Display', Georgia, 'Times New Roman', serif;
+$gothamBook: "GothamBook", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$gothamLight: "GothamLight", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$gothamThin: "GothamThin", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$helvetica: "Helvetica Neue", "Helvetica","Arial", sans-serif;
+$times: "Times", "Times New Roman", serif;
+
+// breakpoints
+$viewport960: 960px;
+$viewport767: 767px;
+$viewport640: 640px;
+$viewport590: 590px;
+$viewport500: 500px;
+$viewport350: 350px;
+
+$bp960: new-breakpoint(max-width $viewport960 12);
+$bp767: new-breakpoint(max-width $viewport767 12); //for use with topnav
+$bp640: new-breakpoint(max-width $viewport640 12);
+$bp590: new-breakpoint(max-width $viewport590 12); // for use with search filters
+$bp500: new-breakpoint(max-width $viewport500 12);
+$bp350: new-breakpoint(max-width $viewport350 12); // for use with search filters
+
+
+// Colors
+$white: #fff;
+$black: #000;
+$grey: #767676;
+$blue: #4c63b8;
+
+// Font Sizes
+$base-font-size: 1em;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Other Sizes
+$color-heather-radius: 3px;
+$base-spacing: $base-line-height * 1em;
+$small-spacing: $base-spacing / 2;
+$base-z-index: 0;
+
+// Animations
+$base-duration: 150ms;
+$base-timing: ease-in-out;
+
+// margins
+$main-left-margin: 5%;

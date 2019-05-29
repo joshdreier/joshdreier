@@ -1,0 +1,444 @@
+/* AUTHOR: JOSH DREIER, 2016 */
+
+@import "bourbon";
+@import "neat";
+
+@import "fonts";
+@import "variables";
+@import "mixins";
+@import "grid";
+@import "typography";
+@import "lists";
+@import "css-grid";
+
+
+#container {
+  @extend %row;
+}
+
+/////////////// HEADER
+header {
+	background: #fff url(../images/border_horz.png) 0 99px repeat-x;
+	height:100px;
+	position: relative;
+	margin-bottom: rem(50);
+
+	@include media($bp767) {
+		height: 80px;
+		background-position: 0 79px;
+	}
+
+	#logo {
+		background:url(../images/logo.png) bottom repeat-x;
+		background-size: cover;
+		background-position: center;
+		width: 223px;
+		height: 32px;
+		position: absolute;
+		cursor: pointer;
+		text-indent: -9999px;
+		bottom:22px;
+		left:1px;
+	}
+
+	.logo-container {
+
+		@include media($bp767) {
+			width: 100%;
+			height: 16px;
+			text-align: center;	
+			margin-top: 20px;
+
+			#logo {
+				display: block;
+				width: 114px;
+				height: 16px;
+				position: static;
+				background-size:(114px 16px);
+				margin: 0 auto 10px;
+			}
+
+		}
+
+	}
+	
+	.tagline {
+		font: normal 18px/20px $gothamLight;
+		color: $black;
+		position: absolute;
+		left: 300px;
+		bottom: 5px;
+		line-height: $heading-line-height;
+		margin: 0 0 $small-spacing;
+		text-transform: lowercase;
+
+		@include media($bp767) {
+			position: static;
+			font-size: rem(13);
+			text-align: center;
+			margin: 5px auto 0;
+		}
+
+	}
+
+	nav {
+		position: absolute;
+		right: 0;
+		bottom: 15px;
+
+		@include media($bp767) {
+			width: 100%;
+			text-align: center;
+			position: static;
+			margin-top: 10px;
+		}
+
+		ul {
+			display: flex;
+			justify-content: center;
+
+			> li {
+				padding-left: 25px;
+			}
+		}
+
+		a {
+			font-family: $gothamBook;
+			font-size: 14px;
+			line-height: 16px;
+			text-transform: lowercase;
+			color: $blue;
+
+			@include media($bp767) {
+				font-size: 13px;
+				padding: 0 15px;
+			}
+
+			&:hover {
+				color: lighten( $blue, 15% );
+			}
+
+			&.active {
+				color: $black;
+			}
+
+		}
+	}
+}// header
+
+
+//////////////////SECTIONS
+
+.portfolio > li {
+	background: url(../images/border_horz.png) bottom repeat-x;
+	position: relative;
+	padding-bottom: rem(30);
+	margin-bottom: rem(50);
+	overflow: hidden;
+
+	&:last-child {
+		margin-bottom: rem(10);
+	}
+
+	.sidebar {
+		@include span-columns(4);
+		color: #666;
+		font-size: 1em;
+		line-height: 1.25;
+
+		@include media($bp767) {
+			@include fill-parent;
+			font-size: 12px;
+			line-height: 15px;
+		}
+
+		h2 {
+			font-family: $gothamBook;
+			color: #393939;
+			margin-bottom: 0;
+			font-size: 1em;
+
+			span {
+				font-family: $gothamLight;
+				color: #666;
+				padding-right: 3px;
+
+				@include media($bp767) {
+					letter-spacing: -1px;
+				}
+
+			}
+
+		}
+
+		p.url {
+			margin-top: 0;
+			padding-top: 0;
+
+			a {
+				font-weight: normal;
+				font-family: $gothamLight;
+				@include outline($stroke: inset);
+				color: $blue;
+				border-bottom: 0;
+
+				&:hover {
+					color:#333;
+				}
+
+			}
+		}
+
+		ul.tasks {
+			font: italic 1em/1.25em $times;
+			font-weight: normal;
+			color: $grey;
+			margin-bottom: 13px;
+
+			@include media($bp767) {
+				font-size: 12px;
+				line-height: 15px;
+			}
+
+		}
+
+		p {
+			font: normal 1em/1.6 $times;
+			color: $grey;
+			margin-bottom: rem(12);
+
+			@include media($bp767) {
+				font-size: 12px;
+				line-height: 15px;
+			}
+
+			a {
+				color: $grey;
+				border-bottom: dotted 1px #aaa;
+
+				&:hover {
+					text-decoration: none;
+					border-bottom:dotted 1px #333;
+				}
+
+			}
+
+		}
+	}// aside
+
+	.gallery {
+		@include span-columns(8);
+		position:relative;
+
+		@include media($bp767) {
+			@include fill-parent;
+		}
+
+		div.swiper-wrapper {
+			width: 100%;
+			margin-bottom: rem(20);
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+
+			&:after {
+				@include size(100%);
+				@include position(absolute, 0 0 0 0);
+				content: '';
+				display: block;
+				z-index:999;
+				cursor:pointer;
+			}
+
+		}
+
+		&:hover {
+			> nav {
+				.swiper-button-next,
+				.swiper-button-prev {
+					&:not(:focus) {
+						opacity: 1;
+					}
+				}
+			}
+			
+		}
+
+		> nav {
+			
+			span {
+				text-indent:-9999px;
+				cursor:pointer;
+			}
+
+			.swiper-button-next,
+			.swiper-button-prev {
+				@include size(44px);
+				background-image: none;
+				background-color: rgba(#fff, 0.75);
+				border-radius: 50%;
+				transition: background-color $base-duration $base-timing;
+				text-indent: -9999em;
+				@include outline($spread: 10px);
+				transition: opacity $base-duration $base-timing;
+
+				&:not(:focus) {
+					opacity: 0;
+				}
+
+				@include media($bp767) {
+					@include size(30px);
+				}
+
+				&:hover {
+					background-color: rgba(#fff, 1);
+				}
+
+				&::after {
+					@include size(18px 30px);
+					@include position(absolute, 7px null null 14px);
+					content: '';
+					display: block;
+					background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+					background-size: 18px 30px;
+
+					@include media($bp767) {
+						@include size(12px 20px);
+						@include position(absolute, 5px null null 10px);
+						background-size: 12px 20px;
+					}
+
+				}
+
+			}
+
+			.swiper-button-prev {
+
+				&:after {
+					@include position(absolute, 7px null null 11px);
+					@include transform(rotate(180deg));
+
+					@include media($bp767) {
+						@include position(absolute, 5px null null 7px);
+					}
+
+				}
+
+			}
+
+		}// nav
+
+	}// . gallery
+
+}// section
+
+
+footer {
+	position:relative;
+	clear:both;
+	padding-bottom:30px;
+	font-size:14px;
+	height:50px;
+}
+
+// Bio Page
+#bio {
+	font-family: $times;
+	font-size: 1.2em;
+	line-height: 1.6;
+
+	@include media($bp767) {
+		font-size: rem(16);
+		line-height: rem(20);
+	}
+
+	p {
+		margin-bottom: rem(15);
+	}
+
+	ul.bullets {
+		margin: rem(20) 0 rem(50);
+		overflow: hidden;
+		color: $grey;
+
+		li {
+			@extend %li-bullet;
+			@include span-columns(6);
+			margin-bottom: rem(4);
+			margin-right: 0;
+
+			@include media($bp767) {
+				@include fill-parent;
+			}
+
+		}
+
+	}
+
+}// #bio
+
+
+// Contact Page
+#contact {
+	font-size: 1.2em;
+
+	ul {
+		padding-bottom: rem(70);
+		line-height: rem(24);
+
+		li {
+			margin-bottom: rem(20);
+		}
+
+	}
+
+}// #contact
+
+
+//Article
+article {
+
+	p {
+		margin: 20px 0;
+	}
+
+	h2 {
+		margin: 50px 0 20px;
+		font-weight: bold;
+		font-size: 1.7em;
+
+		sup {
+			font-size: 16px;
+			margin-left: 5px;
+		}
+	}
+
+	h3 {
+		font-size: 1em;
+		margin: 20px 0;
+	}
+
+	h4 {
+		margin: 20px 0;
+	}
+
+	ul {
+		list-style-type: disc;
+
+		li {
+			margin-left: 20px;
+		}
+	}
+
+	ol {
+		list-style-type: decimal;
+
+		li {
+			margin-left: 20px;
+		}
+    
+	}
+
+}

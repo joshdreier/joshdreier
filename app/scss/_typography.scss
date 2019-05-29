@@ -1,0 +1,64 @@
+body {
+  font-family: 'MyriadProLight';
+  background: $white;
+  color: $black;
+  font-feature-settings: 'kern', 'liga', 'pnum';
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: $heading-line-height;
+  margin: 0 0 $small-spacing;
+}
+
+h3 {
+  font-size: rem(22);
+  line-height: rem(28px);
+  margin-bottom: rem(12);
+}
+
+p {
+  margin: 0 0 $small-spacing;
+}
+
+a {
+  text-decoration:none;
+  color: $blue;
+  transition: color $base-duration $base-timing;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $black;
+  }
+  
+}
+
+// hide outline if not using keyboard tabbing
+button,
+a,
+input,
+textarea,
+[tabindex] {
+  @include outline;
+}
+
+strong {
+  font-family:'MyriadProSemibold';
+}
+
+img,
+picture {
+  margin: 0;
+  width: 100%;
+  border:none;
+  display:block;
+}

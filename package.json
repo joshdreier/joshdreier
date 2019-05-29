@@ -1,0 +1,15 @@
+{
+  "name": "joshdreier",
+  "version": "1.0.0",
+  "description": "personal website",
+  "scripts": {
+    "test": "dfsdfsdf"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-modernizr": "0.0.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-useref": "^3.0.8",
+    "run-sequence": "^1.1.5"
+  }
+}

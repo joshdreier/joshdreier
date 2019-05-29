@@ -1,0 +1,32 @@
+// @mixin outline;
+// Displays border around container for accessibility purposes
+// Use if default "outline" styles are cut off or low contrast
+// Options include $color, $blur, $spread, and $opacity
+@mixin outline($color: $blue, $spread: 2px, $opacity: 1, $stroke: null) {
+  outline: 0;
+
+  // body class to detect keyboard tabbing
+  .keyboard-user &:focus {
+    box-shadow: 0 0 0 $spread rgba($color, $opacity) $stroke;
+  }
+}
+
+
+
+/**
+ * Hide an element, whilst making its content available to screen readers
+ * and meeting WCAG AA guidelines
+ */
+ @mixin visually-hidden() {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+.visually-hidden {
+  @include visually-hidden();
+}

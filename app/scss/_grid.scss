@@ -1,0 +1,16 @@
+%row {
+  @include outer-container;
+  padding: 0 rem(70);
+
+  @include media($bp960) {
+    padding: 0 rem(30);
+  }
+
+  @include media($bp640) {
+    padding: 0 rem(20);
+  }
+
+  @include media($bp500) {
+    padding: 0 rem(10);
+  }
+}
