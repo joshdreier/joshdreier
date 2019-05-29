@@ -20,12 +20,12 @@ $viewport590: 590px;
 $viewport500: 500px;
 $viewport350: 350px;
 
-$bp960: new-breakpoint(max-width $viewport960 12);
-$bp767: new-breakpoint(max-width $viewport767 12); //for use with topnav
-$bp640: new-breakpoint(max-width $viewport640 12);
-$bp590: new-breakpoint(max-width $viewport590 12); // for use with search filters
-$bp500: new-breakpoint(max-width $viewport500 12);
-$bp350: new-breakpoint(max-width $viewport350 12); // for use with search filters
+$bp960: 'screen and (max-width: 960px)';
+$bp767: 'screen and (max-width: 767px)'; //for use with topnav
+$bp640: 'screen and (max-width: 640px)';
+$bp590: 'screen and (max-width: 590px)'; // for use with search filters
+$bp500: 'screen and (max-width: 500px)';
+$bp350: 'screen and (max-width: 350px)'; // for use with search filters
 
 
 // Colors

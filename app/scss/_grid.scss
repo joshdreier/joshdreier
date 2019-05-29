@@ -1,5 +1,5 @@
 %row {
-  @include outer-container;
+  max-width: 1140px;
   padding: 0 rem(70);
 
   @include media($bp960) {

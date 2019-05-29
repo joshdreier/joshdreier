@@ -1,11 +1,12 @@
-/* AUTHOR: JOSH DREIER, 2016 */
+/* AUTHOR: JOSH DREIER, 2019 */
 
-@import "bourbon";
-@import "neat";
 
+@import "rems";
 @import "fonts";
 @import "variables";
+@import "media-queries";
 @import "mixins";
+@import "font";
 @import "grid";
 @import "typography";
 @import "lists";
@@ -14,6 +15,7 @@
 
 #container {
   @extend %row;
+  margin: 0 auto;
 }
 
 /////////////// HEADER
@@ -74,7 +76,7 @@ header {
 
 		@include media($bp767) {
 			position: static;
-			font-size: rem(13);
+			@include font(13);
 			text-align: center;
 			margin: 5px auto 0;
 		}
@@ -141,13 +143,14 @@ header {
 	}
 
 	.sidebar {
-		@include span-columns(4);
+		width: percentage(1/3);
+		float: left;
 		color: #666;
 		font-size: 1em;
 		line-height: 1.25;
 
 		@include media($bp767) {
-			@include fill-parent;
+			width: 100%;
 			font-size: 12px;
 			line-height: 15px;
 		}
@@ -227,11 +230,12 @@ header {
 	}// aside
 
 	.gallery {
-		@include span-columns(8);
+		width: 60%;
+		float: right;
 		position:relative;
 
 		@include media($bp767) {
-			@include fill-parent;
+			width: 100%;
 		}
 
 		div.swiper-wrapper {
@@ -244,8 +248,13 @@ header {
 			}
 
 			&:after {
-				@include size(100%);
-				@include position(absolute, 0 0 0 0);
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
 				content: '';
 				display: block;
 				z-index:999;
@@ -275,7 +284,8 @@ header {
 
 			.swiper-button-next,
 			.swiper-button-prev {
-				@include size(44px);
+				width: 44px;
+				height: 44px;
 				background-image: none;
 				background-color: rgba(#fff, 0.75);
 				border-radius: 50%;
@@ -289,7 +299,8 @@ header {
 				}
 
 				@include media($bp767) {
-					@include size(30px);
+					width: 30px;
+					height: 30px;
 				}
 
 				&:hover {
@@ -297,16 +308,22 @@ header {
 				}
 
 				&::after {
-					@include size(18px 30px);
-					@include position(absolute, 7px null null 14px);
+					width: 18px;
+					height: 30px;
+					position: absolute;
+					top: 7px;
+					left: 14px;
 					content: '';
 					display: block;
 					background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
 					background-size: 18px 30px;
 
 					@include media($bp767) {
-						@include size(12px 20px);
-						@include position(absolute, 5px null null 10px);
+						width: 12px;
+						height: 20px;
+						position: absolute;
+						top: 5px;
+						left: 10px;
 						background-size: 12px 20px;
 					}
 
@@ -317,11 +334,15 @@ header {
 			.swiper-button-prev {
 
 				&:after {
-					@include position(absolute, 7px null null 11px);
-					@include transform(rotate(180deg));
+					position: absolute;
+					top: 7px;
+					left: 11px;
+					transform: rotate(180deg);
 
 					@include media($bp767) {
-						@include position(absolute, 5px null null 7px);
+						position: absolute;
+						top: 5;
+						left: 7px;
 					}
 
 				}
@@ -350,7 +371,7 @@ footer {
 	line-height: 1.6;
 
 	@include media($bp767) {
-		font-size: rem(16);
+		@include font(16);
 		line-height: rem(20);
 	}
 
@@ -365,12 +386,12 @@ footer {
 
 		li {
 			@extend %li-bullet;
-			@include span-columns(6);
+			width: 50%;
 			margin-bottom: rem(4);
 			margin-right: 0;
 
 			@include media($bp767) {
-				@include fill-parent;
+				width: 100%;
 			}
 
 		}
@@ -386,7 +407,7 @@ footer {
 
 	ul {
 		padding-bottom: rem(70);
-		line-height: rem(24);
+		line-height: 1.5;
 
 		li {
 			margin-bottom: rem(20);
