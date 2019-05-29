@@ -11,5 +11,8 @@
     "gulp-sass": "^2.2.0",
     "gulp-useref": "^3.0.8",
     "run-sequence": "^1.1.5"
+  },
+  "dependencies": {
+    "node-sass": "^4.12.0"
   }
 }
