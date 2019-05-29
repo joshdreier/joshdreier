@@ -92,7 +92,7 @@ gulp.task('sass-lint', function () {
     .pipe(sassLint.failOnError());
 });
 
-gulp.task('lint', ['js-lint', 'sass-lint']);
+gulp.task('lint', gulp.series(['js-lint', 'sass-lint']));
 
 gulp.task('compress', function () {
   'use strict';
@@ -151,13 +151,15 @@ gulp.task('video', () => {
     .pipe(gulp.dest('dist/video'));
 });
 
-gulp.task('build', ['sass', 'compress', 'modernizr', 'html', 'fonts', 'images', 'video']);
+gulp.task('build', gulp.series(['sass', 'compress', 'modernizr', 'html', 'fonts', 'images', 'video']));
 
-gulp.task('watch', ['build'], function () {
+gulp.task('watch', gulp.series(['build'], function () {
   'use strict';
   livereload.listen();
   gulp.watch(paths.sass.watch, ['sass']);
   gulp.watch(paths.scripts, ['compress']);
-});
+}));
 
-gulp.task('default', ['build']);
+
+gulp.task('default', gulp.series(['build']));
+
